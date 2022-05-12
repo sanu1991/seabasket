@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/seabasket/static/css/main.7288f1f8.css",
-    "main.js": "/seabasket/static/js/main.8017fd8c.js",
+    "main.js": "/seabasket/static/js/main.707f8326.js",
     "static/media/cover.png": "/seabasket/static/media/cover.21c39ab1d58f21ad1e0a.png",
     "static/media/logo.PNG": "/seabasket/static/media/logo.ea06cab50a2f3f5ab0db.PNG",
     "static/media/bg.jpg": "/seabasket/static/media/bg.653391af586cf9ea0749.jpg",
     "index.html": "/seabasket/index.html",
     "main.7288f1f8.css.map": "/seabasket/static/css/main.7288f1f8.css.map",
-    "main.8017fd8c.js.map": "/seabasket/static/js/main.8017fd8c.js.map"
+    "main.707f8326.js.map": "/seabasket/static/js/main.707f8326.js.map"
   },
   "entrypoints": [
     "static/css/main.7288f1f8.css",
-    "static/js/main.8017fd8c.js"
+    "static/js/main.707f8326.js"
   ]
 }
