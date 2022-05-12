@@ -4,7 +4,7 @@ import logo from './images/logo.PNG'
 import cover from './images/cover.png'
 
 const Container = () => {
-    const [items, setItems] = useState("");
+    const [items, setItems] = useState([]);
 
     const getData = async () => {
         try {
@@ -29,9 +29,6 @@ const Container = () => {
         getData();
     }, []);
 
-    const { categories, faq, read, topics } = items;
-    console.log(categories, faq, read, topics);
-
     return (
         <>
             <nav id="navbar-example2" class="navbar navbar-light bg-light fixed-top px-3">
@@ -49,7 +46,7 @@ const Container = () => {
                     <li class="nav-item"><button type="button" class="btn btn-primary btn-lg px-4"><h4><b> Login </b></h4></button></li>
                 </ul>
             </nav>
-            <section className='container mt-5 pt-4' data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+            <section className='container' style={{ marginTop: "100px" }} data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabIndex="0">
                 <div className='d-flex justify-content-center'>
                     <img src={cover} className='img-fluid' alt="error!" width="1600" height="500" />
                 </div>
@@ -62,12 +59,12 @@ const Container = () => {
                 <div className="container mt-5 pt-5 mx-auto">
                     <h1 id="scrollspyHeading1">CATEGORIES</h1>
                     <div className="row">
-                        {categories.map((mapItem) => (
-                            <div className="col">
+                        {items.map((items) => (
+                            <div className="col" key={items.id}>
                                 <div class="card mx-auto mt-5 rounded-3" style={{ width: "18rem" }}>
-                                    <img src={mapItem.image} class="card-img-top" alt="error" width="150" height="120" />
+                                    <img src={items.image} class="card-img-top" alt="error" width="150" height="120" />
                                     <div class="card-body">
-                                        <h5 class="card-title text-center">{mapItem.item}</h5>
+                                        <h5 class="card-title text-center">{items.item}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -83,18 +80,18 @@ const Container = () => {
                 <div className="container mt-5 pt-5 mx-auto">
                     <h1 id="scrollspyHeading2" class="text-center">FAQS</h1>
                     <div class="accordion pt-5" id="accordionExample">
-                        {faq.map((mapItem) => (
-                            <div className="text-center fs-5">
+                        {items.map((items) => (
+                            <div className="text-center fs-5" key={items.id}>
 
                                 <div class="accordion-item">
-                                    <h2 class="accordion-header" id={mapItem.id}>
+                                    <h2 class="accordion-header" >
                                         <button class="accordion-button fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            {mapItem.ques}
+                                            {items.faq_ques}
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby={mapItem.id} data-bs-parent="#accordionExample">
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby={items.id} data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            {mapItem.ans}
+                                            {items.faq_ans}
                                         </div>
                                     </div>
                                 </div>
@@ -107,12 +104,12 @@ const Container = () => {
                 <div className="container mt-5 pt-5 mx-auto">
                     <h1 class="text-center">HAVE A READ</h1>
                     <div class="pt-5">
-                        {read.map((mapItem) => (
-                            <div>
+                        {items.map((items) => (
+                            <div key={items.id}>
                                 <div class="card p-5" style={{ borderRadius: "50px" }}>
                                     <div class="card-body">
-                                        <h2 class="card-title">{mapItem.title}</h2><br />
-                                        <h4 class="card-text">{mapItem.desc}</h4><br />
+                                        <h2 class="card-title">{items.read_title}</h2><br />
+                                        <h4 class="card-text">{items.read_desc}</h4><br />
                                         <h2 className='text-end text-primary'> READ MORE <i class="fa-solid fa-angle-right"></i> </h2>
                                     </div>
                                 </div>
@@ -124,19 +121,19 @@ const Container = () => {
                 <div className="container m-5 pt-5 mx-auto">
                     <h1 id="scrollspyHeading3" class="text-center">TOPICS YOU CAN'T MISS</h1>
                     <div className="pt-5">
-                        {topics.map((mapItem) => (
-                            <div>
-                                <div class="card" style={{ borderRadius: "50px" }}>
+                        {items.slice(0, 2).map((items) => (
+                            <div key={items.id}>
+                                <div class="card">
                                     <div class="row g-0">
                                         <div class="col-md-6">
                                             <div class="card-body p-5">
-                                                <h3 class="card-title">{mapItem.title}</h3> <br />
-                                                <h5 class="card-text">{mapItem.desc}</h5> <br />
-                                                <h3 class="card-text text-primary">READ MORE <i class="fa-solid fa-angle-right"></i></h3>
+                                                <h5 class="card-title">{items.topics_title}</h5> <br />
+                                                <p class="card-text">{items.topics_desc}</p> <br />
+                                                <h5 class="card-text text-primary">READ MORE <i class="fa-solid fa-angle-right"></i></h5>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 p-5">
-                                            <img src={mapItem.image} style={{ borderRadius: "50px" }} class="img-fluid" alt="error" />
+                                        <div class="col-md-6   my-auto">
+                                            <img src={items.topics_img} class="img-fluid" alt="error" />
                                         </div>
                                     </div>
                                 </div>
